@@ -10,7 +10,11 @@
 7. [Control](07.html)
 
 ## Method
-Repetitive drills. Repeat each drill 3 to 5 times.
+Repetitive drills. Repeat each drill 3 to 5 times per class. Start
+with a blank editor at the beginning of each drill each time 
+the student types in the drill.
+Delay explanation of learning objectives until after child can type in
+drills from a blank screen.
 
 ## Target Student
 12 year old girl.
