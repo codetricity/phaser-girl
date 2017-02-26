@@ -1,0 +1,22 @@
+<script src='js/phaser.min.js'></script>
+
+<script type='text/javascript'>
+    
+var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'body' , { create: create, update: update} );
+
+var player;
+
+function create() {
+    player = game.add.graphics(0,0);
+    player.beginFill(0xff9b37);
+    player.drawCircle(10, 10, 10);
+    
+    game.physics.arcade.enable(player);
+    player.body.collideWorldBounds = true;
+}
+
+function update() {
+    player.body.velocity.x = 50;
+}
+
+</script>
