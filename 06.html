@@ -22,16 +22,13 @@ function create() {
 function update() {
     player.body.velocity.x = 50;
 
-    if (cursors.left.isDown)
-    {
+    if (cursors.left.isDown) {
         game.debug.text("left cursor", 10, 340);
     }
-    else if (cursors.right.isDown)
-    {
+    else if (cursors.right.isDown) {
         game.debug.text('right cursor', 10, 340);
     }
-    else
-    {
+    else {
         game.debug.text('no cursor movement', 10, 340);
     }
 }
