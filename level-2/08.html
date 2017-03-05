@@ -2,14 +2,12 @@
 
 <script>
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'body', {create: create});
-
-var forestLayer;
-const MAX_TREES = 20;
+const MAX_TREES = 20
 
 function create() {
     forestLayer = game.add.graphics();
 
-    var tree = function(x,y, size) {
+    var tree = function(x, y, size) {
         forestLayer.beginFill(0x00ff00);
         forestLayer.drawCircle(x, y, size);
     }
@@ -18,9 +16,7 @@ function create() {
         var xPos = Math.floor(Math.random() * 800);
         var yPos = 400 + Math.floor(Math.random() * 200);
         var sizeTree = Math.floor(Math.random() * 100);
-        console.log(xPos);
         tree(xPos, yPos, sizeTree);
     }
 }
-
 </script>

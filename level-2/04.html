@@ -1,0 +1,19 @@
+<script src='js/phaser.js'></script>
+
+<script>
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'body', {create: create});
+
+function create() {
+    forestLayer = game.add.graphics();
+
+    var tree = function(x, y, size) {
+        forestLayer.beginFill(0x00ff00);
+        forestLayer.drawCircle(x, y, size);
+    }
+
+    for (numTrees = 0; numTrees < 3; numTrees++) {
+        var xPos = numTrees * 100;
+        tree(xPos, 100, 100);
+    }
+}
+</script>
