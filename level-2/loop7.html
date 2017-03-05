@@ -1,0 +1,19 @@
+<!--Control-->
+<script src='js/phaser.js'></script>
+
+<script type='text/javascript'>
+    
+var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'body' , { create: create} );
+var player;
+
+function create() {
+    player = game.add.graphics(0,0);
+    player.beginFill(0xff9b37);
+    
+    for (i = 0; i < 10; i++) {
+        var xPos = Math.floor(Math.random() * 800);
+        console.log("x position is " + xPos);
+        player.drawCircle(xPos, 10, 30);
+    }
+}
+</script>
