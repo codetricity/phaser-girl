@@ -1,0 +1,24 @@
+<script src='js/phaser.js'></script>
+<script>
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'body', {
+    preload: preload,
+    create: create,
+    update: update
+});
+
+function preload() {
+    game.load.image('pusheen', 'assets/pusheen64.png');
+}
+
+function create() {
+    player = game.add.sprite(0, 100, 'pusheen');
+    game.physics.arcade.enable(player);
+}
+
+function update() {
+    player.body.velocity.x = 50;
+}
+
+
+
+</script>
