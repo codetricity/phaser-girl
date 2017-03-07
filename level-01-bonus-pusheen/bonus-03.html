@@ -1,0 +1,95 @@
+<script src='js/phaser.js'></script>
+<script>
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'body', {
+    preload: preload,
+    create: create,
+    update: update
+});
+
+var dog;
+var player;
+var friendly;
+var showHeart = false;
+var heart;
+
+function preload() {
+    game.load.image('background', 'assets/background800x600.jpg');
+    game.load.image('pusheen', 'assets/pusheen64.png');
+    game.load.image('dog', 'assets/dog64.png');
+    game.load.image('dog-right', 'assets/dog-right.png');
+    game.load.image('heart', 'assets/heart.png');
+}
+
+function create() {
+    game.add.sprite(0,0, 'background');
+
+    // player - pusheen
+    player = game.add.sprite(0, 100, 'pusheen');    
+    game.physics.arcade.enable(player);
+    player.body.collideWorldBounds = true;
+    
+    // dog -friend of pusheen
+    dog = game.add.sprite(100, 500, 'dog');
+    game.physics.arcade.enable(dog);
+    dog.body.collideWorldBounds = true;
+    dog.body.velocity.x = -10;
+
+    cursors = game.input.keyboard.createCursorKeys();
+}
+
+function update() {
+    if (cursors.right.isDown) {
+        player.body.velocity.x = 50;
+    }
+    else if (cursors.left.isDown) {
+        player.body.velocity.x = -50;
+    }
+    else if (cursors.up.isDown) {
+        player.body.velocity.y = -50;
+    }
+    else if (cursors.down.isDown) {
+        player.body.velocity.y = 50;
+    }
+    else {
+        player.body.velocity.x = 0;
+        player.body.velocity.y = 0;
+    }
+
+    // make dog move
+
+    if (dog.x < 10) {
+        dog.destroy();
+        dog = game.add.sprite(10, 500, 'dog-right');
+        game.physics.arcade.enable(dog);
+        dog.body.collideWorldBounds = true;
+        dog.body.velocity.x = 50;
+        console.log('touching left');
+    }
+
+    else if (dog.x > 700) {
+        dog.destroy();
+        dog = game.add.sprite(700, 500, 'dog');
+        game.physics.arcade.enable(dog);
+        dog.body.collideWorldBounds = true;
+        dog.body.velocity.x = -50;
+        console.log('touching right');
+    }
+
+    // control display of heart when dog and pusheen overlap
+    friendly = game.physics.arcade.overlap(dog, player);
+    if (friendly) {
+        if (!showHeart) {
+            heart = game.add.sprite(250, 100, 'heart');
+        }
+        showHeart = true;
+        console.log("friendly, " + showHeart);
+    }
+
+    else if (showHeart) {
+        heart.destroy();
+        showHeart = false;
+        console.log("destroy heart");
+    }
+}
+
+</script>
