@@ -33,6 +33,7 @@ function create() {
     game.physics.arcade.enable(dog);
     dog.body.collideWorldBounds = true;
     dog.body.velocity.x = -10;
+    dog.anchor.setTo(0.5);
 
     cursors = game.input.keyboard.createCursorKeys();
 }
@@ -55,24 +56,15 @@ function update() {
         player.body.velocity.y = 0;
     }
 
-    // make dog move
-
-    if (dog.x < 10) {
-        dog.destroy();
-        dog = game.add.sprite(10, 500, 'dog-right');
-        game.physics.arcade.enable(dog);
-        dog.body.collideWorldBounds = true;
+   // switch dog direction
+    if (dog.x < 50) {
+        dog.scale.setTo(-1, 1);
         dog.body.velocity.x = 50;
-        console.log('touching left');
     }
 
-    else if (dog.x > 700) {
-        dog.destroy();
-        dog = game.add.sprite(700, 500, 'dog');
-        game.physics.arcade.enable(dog);
-        dog.body.collideWorldBounds = true;
+    if (dog.x > 750) {
+        dog.scale.setTo(1, 1);
         dog.body.velocity.x = -50;
-        console.log('touching right');
     }
 
     // control display of heart when dog and pusheen overlap
